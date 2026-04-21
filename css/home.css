@@ -1,0 +1,233 @@
+/* ═══════════════════════════════════════════════
+   RIDGELINE EXTERIORS — HOME PAGE STYLES
+   Rook Media Demo Site
+═══════════════════════════════════════════════ */
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--nav-height) + 32px + 32px) 5% 80px;
+  background-image: url('../images/Hero Background Image.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(44,62,80,0.88) 0%,
+    rgba(44,62,80,0.65) 35%,
+    rgba(44,62,80,0.22) 60%,
+    rgba(44,62,80,0.00) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(200,134,26,0.18);
+  border: 1px solid rgba(200,134,26,0.45);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--amber);
+  margin-bottom: 1.5rem;
+}
+
+#hero h1 {
+  color: var(--white);
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  margin-bottom: 1.25rem;
+}
+
+#hero h1 span { color: var(--amber); }
+
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.hero-trust-badges {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  padding: 5px 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+
+.scroll-arrow {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounceDown 1.8s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%       { transform: translateY(6px); opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  #hero {
+    background-attachment: scroll;
+    padding-top: calc(var(--nav-height) + 32px + 60px);
+    min-height: 80vh;
+  }
+  .hero-overlay {
+    background: linear-gradient(
+      to right,
+      rgba(44,62,80,0.88) 0%,
+      rgba(44,62,80,0.75) 60%,
+      rgba(44,62,80,0.55) 100%
+    );
+  }
+}
+
+@media (max-width: 600px) {
+  #hero h1 { font-size: 2.2rem; }
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-outline-white { width: 100%; justify-content: center; }
+}
+
+/* =========== PAGE-TRANSITION OVERLAY SAFETY (HOMEPAGE) =========== */
+#page-transition,
+#page-transition.active,
+#page-transition.fade-out,
+#page-transition.loading {
+  pointer-events: none !important;
+}
+
+.btn-primary,
+.btn-outline-white,
+.btn-slate,
+.btn-nav,
+.btn-full,
+.learn-more,
+.service-row-link,
+.hero-buttons a,
+.hero-pill {
+  position: relative !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.hero-buttons {
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Hero pill star alignment */
+.hero-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+.hero-pill-star {
+  flex-shrink: 0;
+}
+
+/* Testimonial stars inline flex */
+.testimonial-stars {
+  display: inline-flex !important;
+  gap: 3px !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Sticky banner icon alignment */
+.sticky-banner-text {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+}
+.sticky-banner-icon {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* Hero trust pills with icons */
+.trust-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+}
+.trust-pill-icon {
+  flex-shrink: 0;
+}
+
+/* Gallery completed badge with SVG check */
+.gallery-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+}
+.gallery-badge-icon {
+  flex-shrink: 0;
+}
