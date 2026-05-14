@@ -302,6 +302,379 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
+/* ── PROJECT DATA ── */
+const projectData = {
+  'hardie-artisan-naperville': {
+    title: 'James Hardie Artisan Install',
+    location: 'Naperville, IL',
+    type: 'Fiber Cement Siding',
+    scope: 'Full James Hardie Artisan V-Groove installation, approximately 2,400 sq ft, with ColorPlus primed finish and custom trim package',
+    beforeLabel: 'Failing Vinyl Siding',
+    beforeDesc: 'Original vinyl with warping, fading, and gaps at corners — no longer weatherproof after 20 years of UV and thermal cycling',
+    afterLabel: 'Hardie Artisan Install Complete',
+    afterDesc: 'Full tear-off and replacement with James Hardie Artisan V-Groove, primed finish, full moisture barrier and wrap system — 30-year warranty',
+  },
+  'smartside-ranch-aurora': {
+    title: 'LP SmartSide Ranch Reside',
+    location: 'Aurora, IL',
+    type: 'Engineered Wood Siding',
+    scope: 'Complete LP SmartSide lap reside, approximately 1,800 sq ft ranch, with new housewrap and full trim package',
+    beforeLabel: 'Rotting Wood Lap Siding',
+    beforeDesc: 'Original 1970s wood lap with widespread rot, peeling paint, and failed caulk seams allowing water infiltration at multiple points',
+    afterLabel: 'LP SmartSide Lap Complete',
+    afterDesc: 'Full tear-off and LP SmartSide 8-inch lap installation, factory SmartGuard primer, new housewrap, trim boards, and soffit panels throughout',
+  },
+  'vinyl-replacement-downers-grove': {
+    title: 'Full Vinyl Replacement',
+    location: 'Downers Grove, IL',
+    type: 'Vinyl Siding',
+    scope: 'Full vinyl reside, approximately 2,100 sq ft two-story, with foam-back insulated panels and full trim replacement',
+    beforeLabel: 'Chalked, Cracked Vinyl',
+    beforeDesc: 'Contractor-grade vinyl from the 1990s with fading, cracking, and multiple storm-damaged panels — no longer code compliant after hail event',
+    afterLabel: 'Insulated Vinyl System',
+    afterDesc: 'Full reside with premium insulated vinyl, upgraded J-channel and trim, seamless inside corners — 25-year manufacturer warranty',
+  },
+  'storm-damage-wheaton': {
+    title: 'Storm Damage Repair',
+    location: 'Wheaton, IL',
+    type: 'Siding Repair',
+    scope: 'Insurance-documented storm damage repair, approximately 600 sq ft of impact-damaged panels with full profile and color match',
+    beforeLabel: 'Hail-Impacted Siding',
+    beforeDesc: 'Isolated hail damage across south and west elevations — dented panels, cracked trim, and fascia damage documented in the insurance estimate',
+    afterLabel: 'Matched Repair Complete',
+    afterDesc: 'Panel-for-panel replacement using matching profiles and manufacturer color match, new fascia and trim caps on all impacted sections — insurer approved',
+  },
+  'board-batten-geneva': {
+    title: 'Board & Batten Accent',
+    location: 'Geneva, IL',
+    type: 'Fiber Cement Siding',
+    scope: 'James Hardie HardiePanel vertical board and batten accent on gable ends and upper story, approximately 400 sq ft',
+    beforeLabel: 'Plain Horizontal Siding',
+    beforeDesc: 'Original horizontal lap with no architectural variation — homeowners wanted a two-tone board and batten accent to break up the facade',
+    afterLabel: 'Board & Batten Accent Added',
+    afterDesc: 'HardiePanel smooth vertical board and batten on gable ends and upper story, painted charcoal to contrast with the existing white lap',
+  },
+  'strip-mall-bolingbrook': {
+    title: 'Commercial Strip Mall Reside',
+    location: 'Bolingbrook, IL',
+    type: 'Commercial Siding',
+    scope: 'Full strip mall reside, approximately 6,400 sq ft, fiber cement lap on three tenant bay exteriors with new storefront trim',
+    beforeLabel: 'Failing Stucco Exterior',
+    beforeDesc: 'Existing stucco cracking and delaminating, causing water infiltration into two tenant bays — facility manager needed a permanent solution',
+    afterLabel: 'Fiber Cement Commercial Install',
+    afterDesc: 'Full stucco tear-off, new sheathing and weatherproof barrier, fiber cement lap on all three bays with new aluminum storefront trim package',
+  },
+  'hardieplank-replacement-oswego': {
+    title: 'HardiePlank Full Replacement',
+    location: 'Oswego, IL',
+    type: 'Fiber Cement Siding',
+    scope: 'Full HardiePlank lap replacement, 2,600 sq ft two-story, ColorPlus Iron Gray finish with white trim and new window casings',
+    beforeLabel: 'Deteriorating OSB Lap Siding',
+    beforeDesc: 'Builder-grade OSB-based siding with widespread water damage, corner swelling, and paint failure — OSB no longer viable as a substrate',
+    afterLabel: 'HardiePlank ColorPlus Finish',
+    afterDesc: 'Full tear-off to studs, new moisture barrier where needed, HardiePlank lap in ColorPlus Iron Gray — 30-year fiber cement warranty',
+  },
+  'insulated-vinyl-plainfield': {
+    title: 'Insulated Vinyl Installation',
+    location: 'Plainfield, IL',
+    type: 'Vinyl Siding',
+    scope: 'Complete insulated vinyl reside, approximately 2,300 sq ft, with contoured foam-back panels adding R-2.7 insulation value',
+    beforeLabel: 'Standard Thin Vinyl',
+    beforeDesc: 'Original thin-profile vinyl with poor insulation value, oil-canning on sun-exposed elevations, and multiple dents from previous hail events',
+    afterLabel: 'Contoured Foam-Back Vinyl',
+    afterDesc: 'Full reside with insulated vinyl, 0.044-in. panel with contoured foam backer — improved sound and thermal performance throughout',
+  },
+  'smartside-colonial-batavia': {
+    title: 'LP SmartSide Colonial',
+    location: 'Batavia, IL',
+    type: 'Engineered Wood Siding',
+    scope: 'LP SmartSide lap reside on classic colonial, approximately 2,200 sq ft, with full trim, corner boards, and window surrounds',
+    beforeLabel: 'Rotted Wood Clapboard',
+    beforeDesc: 'Original wood clapboard with rot at base courses, failed caulking at windows, and 30%+ of boards requiring replacement — moisture damage widespread',
+    afterLabel: 'LP SmartSide Colonial Complete',
+    afterDesc: 'Complete tear-off and LP SmartSide lap with factory primed finish, new corner boards, window surrounds, and premium caulking system throughout',
+  },
+  'hail-damage-lisle': {
+    title: 'Hail Damage Repair',
+    location: 'Lisle, IL',
+    type: 'Siding Repair',
+    scope: 'Insurance-documented hail damage repair on full north and east elevations, approximately 900 sq ft, with fascia and soffit replacement',
+    beforeLabel: 'Storm-Damaged Panels',
+    beforeDesc: 'Significant hail impact on north and east elevations — dented panels, cracked trim, and impact damage to fascia documented in adjuster report',
+    afterLabel: 'Elevation Repair Complete',
+    afterDesc: 'Full elevation reside on impacted faces with profile and color match, new fascia caps and soffit on affected sections — insurer paid, deductible only',
+  },
+  'cape-cod-hardie-st-charles': {
+    title: 'Cape Cod Hardie Install',
+    location: 'St. Charles, IL',
+    type: 'Fiber Cement Siding',
+    scope: 'Full James Hardie lap reside on cape cod, approximately 1,900 sq ft, with HardieShingle accents on dormers and custom trim detail',
+    beforeLabel: 'Oxidized Wood Shingles',
+    beforeDesc: 'Weathered wood shingle siding with significant color variation, moss growth in shaded areas, and caulk failure at all dormer transitions',
+    afterLabel: 'HardiePlank with Shingle Accents',
+    afterDesc: 'Full reside in HardiePlank lap, HardieShingle on dormers and gable ends — coordinated gray/white scheme with 30-year fiber cement warranty',
+  },
+  'office-park-warrenville': {
+    title: 'Office Park Exterior Reside',
+    location: 'Warrenville, IL',
+    type: 'Commercial Siding',
+    scope: 'Full exterior reside on 14,000 sq ft office building, fiber cement lap on main elevations with metal panel accents on entry facade',
+    beforeLabel: 'Aged EIFS Exterior',
+    beforeDesc: 'EIFS (synthetic stucco) with systemic cracking, failed sealant joints at windows, and two water intrusion events documented in the prior 24 months',
+    afterLabel: 'Fiber Cement Office Exterior',
+    afterDesc: 'Full EIFS removal, moisture remediation, new moisture barrier, fiber cement lap with painted metal accent panels — commercial-grade caulk at all penetrations',
+  },
+  'hardieshingle-gable-wheaton': {
+    title: 'HardieShingle Accent Gable',
+    location: 'Wheaton, IL',
+    type: 'Fiber Cement Siding',
+    scope: 'HardieShingle accent installation on front gable peak and porch columns, approximately 280 sq ft, with custom trim detail',
+    beforeLabel: 'Deteriorating Vinyl Shakes',
+    beforeDesc: 'Original vinyl shake panels faded to chalky gray, with multiple cracked pieces and a color that no longer matched the updated home exterior',
+    afterLabel: 'HardieShingle Gable Accent',
+    afterDesc: 'HardieShingle installed on front gable with custom trim detail, painted to complement the home — transformed street presence of the facade',
+  },
+  'smartside-farmhouse-oswego': {
+    title: 'SmartSide Modern Farmhouse',
+    location: 'Oswego, IL',
+    type: 'Engineered Wood Siding',
+    scope: 'LP SmartSide reside on modern farmhouse, approximately 2,500 sq ft, combining horizontal lap with vertical board and batten on front facade',
+    beforeLabel: 'Builder Vinyl — Faded',
+    beforeDesc: 'Original thin builder-grade vinyl from new construction 12 years prior, widespread fading and several panels cracked by a prior hail event',
+    afterLabel: 'SmartSide Modern Farmhouse',
+    afterDesc: 'LP SmartSide lap on main body, SmartSide board and batten on front facade — crisp white with black trim for a modern farmhouse aesthetic',
+  },
+  'dutch-lap-woodridge': {
+    title: 'Dutch Lap Vinyl Reside',
+    location: 'Woodridge, IL',
+    type: 'Vinyl Siding',
+    scope: 'Full dutch-lap vinyl reside, approximately 1,950 sq ft, with matching trim, soffit, and fascia replacement throughout',
+    beforeLabel: 'Original Flat Lap Vinyl',
+    beforeDesc: 'Flat-profile vinyl from the early 2000s — chalky surface, no longer accepting paint, and multiple impact marks on the street-facing elevation',
+    afterLabel: 'Dutch Lap Profile Reside',
+    afterDesc: 'Full reside in premium dutch-lap vinyl with scalloped shadow-line profile, coordinated trim, new soffit panels, and aluminum-wrapped fascia throughout',
+  },
+  'wind-damage-bolingbrook': {
+    title: 'Wind Damage Repair',
+    location: 'Bolingbrook, IL',
+    type: 'Siding Repair',
+    scope: 'Emergency wind damage repair on west and south elevations, approximately 450 sq ft of blown-off panels, with temporary weatherproofing and full replacement',
+    beforeLabel: 'Storm-Blown Panels',
+    beforeDesc: 'Derecho-force winds pulled entire sections of siding off the west elevation, exposing housewrap on approximately 30 linear feet of wall',
+    afterLabel: 'Emergency Repair Complete',
+    afterDesc: 'Same-week emergency tarping followed by full profile replacement — panels, trim, and corner caps replaced, all sealed and color-matched',
+  },
+  'hoa-community-lisle': {
+    title: 'HOA Community Reside',
+    location: 'Lisle, IL',
+    type: 'Commercial Siding',
+    scope: 'Full reside on 8 townhome units, approximately 12,000 sq ft total, fiber cement lap with consistent color and trim per HOA specification',
+    beforeLabel: 'Mixed Failing Siding',
+    beforeDesc: '8-unit townhome row with multiple mismatched repair patches — some vinyl, some wood — deteriorating beyond individual repair',
+    afterLabel: 'Unified HOA Fiber Cement',
+    afterDesc: 'Coordinated full reside across all 8 units in matching James Hardie lap, ColorPlus finish per HOA spec — delivered on a 6-week schedule',
+  },
+  'colorplus-ocean-mist-aurora': {
+    title: 'ColorPlus Ocean Mist Install',
+    location: 'Aurora, IL',
+    type: 'Fiber Cement Siding',
+    scope: 'Full James Hardie HardiePlank in ColorPlus Ocean Mist, approximately 2,100 sq ft, with white trim and new window wrap package',
+    beforeLabel: 'Oxidized Beige Vinyl',
+    beforeDesc: 'Original 1990s vinyl in faded beige — significant UV chalking, 15+ cracked panels, no longer aesthetically consistent with the updated neighborhood',
+    afterLabel: 'ColorPlus Ocean Mist Finish',
+    afterDesc: 'Full reside in HardiePlank ColorPlus Ocean Mist — factory-applied finish with 15-year fade/chip warranty, white trim, and new window flashing',
+  },
+};
+
+/* ── PROJECT LIGHTBOX ── */
+(function() {
+  function createLightbox() {
+    const modal = document.createElement('div');
+    modal.id = 'project-lightbox';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Project details');
+    modal.innerHTML = `
+      <div class="lightbox-backdrop"></div>
+      <div class="lightbox-panel">
+        <button class="lightbox-close" aria-label="Close project view">&#x2715;</button>
+        <div class="lightbox-body">
+          <div class="lightbox-slider-wrap">
+            <div class="lightbox-before">
+              <div class="lightbox-svg-container before-svg"></div>
+              <div class="lightbox-side-label before-side-label"></div>
+            </div>
+            <div class="lightbox-after">
+              <div class="lightbox-svg-container after-svg"></div>
+              <div class="lightbox-side-label after-side-label"></div>
+            </div>
+            <div class="lightbox-divider">
+              <div class="lightbox-handle"><span>&#9668;</span><span>&#9658;</span></div>
+            </div>
+          </div>
+          <div class="lightbox-info">
+            <p class="lightbox-type"></p>
+            <h2 class="lightbox-title"></h2>
+            <p class="lightbox-location"></p>
+            <div class="lightbox-scope-wrap">
+              <h4>Project Scope</h4>
+              <p class="lightbox-scope"></p>
+            </div>
+            <div class="lightbox-details-grid">
+              <div class="lightbox-detail-card before-detail">
+                <span class="detail-label">Before</span>
+                <strong class="detail-heading before-label-text"></strong>
+                <p class="detail-desc before-desc-text"></p>
+              </div>
+              <div class="lightbox-detail-card after-detail">
+                <span class="detail-label">After</span>
+                <strong class="detail-heading after-label-text"></strong>
+                <p class="detail-desc after-desc-text"></p>
+              </div>
+            </div>
+            <a href="${location.pathname.includes('/pages/') ? 'contact.html' : 'pages/contact.html'}" class="btn-primary lightbox-cta">Get a Free Estimate &#x2192;</a>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    return modal;
+  }
+
+  const lightbox = createLightbox();
+
+  function initSlider(modal) {
+    const sliderWrap = modal.querySelector('.lightbox-slider-wrap');
+    const divider = modal.querySelector('.lightbox-divider');
+    let isDragging = false;
+    let autoAnimFrame;
+
+    function setSliderPos(pct) {
+      pct = Math.max(2, Math.min(98, pct));
+      divider.style.left = pct + '%';
+      sliderWrap.querySelector('.lightbox-after').style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+    }
+
+    function autoSweep() {
+      const start = performance.now();
+      const duration = 1800;
+      function frame(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3);
+        const pos = 100 - (ease * 50);
+        setSliderPos(pos);
+        if (t < 1) autoAnimFrame = requestAnimationFrame(frame);
+      }
+      autoAnimFrame = requestAnimationFrame(frame);
+    }
+
+    function getEventX(e) {
+      return e.touches ? e.touches[0].clientX : e.clientX;
+    }
+
+    function onMove(e) {
+      if (!isDragging) return;
+      const rect = sliderWrap.getBoundingClientRect();
+      const pct = ((getEventX(e) - rect.left) / rect.width) * 100;
+      setSliderPos(pct);
+    }
+
+    divider.addEventListener('mousedown', () => { cancelAnimationFrame(autoAnimFrame); isDragging = true; });
+    divider.addEventListener('touchstart', () => { cancelAnimationFrame(autoAnimFrame); isDragging = true; }, { passive: true });
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onMove, { passive: true });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    return { setSliderPos, autoSweep, cancelAuto: () => cancelAnimationFrame(autoAnimFrame) };
+  }
+
+  const slider = initSlider(lightbox);
+
+  function openLightbox(projectKey) {
+    const data = projectData[projectKey];
+    if (!data) return;
+
+    lightbox.querySelector('.lightbox-type').textContent = data.type;
+    lightbox.querySelector('.lightbox-title').textContent = data.title;
+    lightbox.querySelector('.lightbox-location').textContent = '📍 ' + data.location;
+    lightbox.querySelector('.lightbox-scope').textContent = data.scope;
+    lightbox.querySelector('.before-label-text').textContent = data.beforeLabel;
+    lightbox.querySelector('.before-desc-text').textContent = data.beforeDesc;
+    lightbox.querySelector('.after-label-text').textContent = data.afterLabel;
+    lightbox.querySelector('.after-desc-text').textContent = data.afterDesc;
+
+    const card = document.querySelector('[data-project="' + projectKey + '"]');
+    const svgEl = card ? card.querySelector('.gallery-card-img svg') : null;
+    const beforeContainer = lightbox.querySelector('.before-svg');
+    const afterContainer = lightbox.querySelector('.after-svg');
+
+    if (svgEl) {
+      const cloneForPanel = function(svg) {
+        const clone = svg.cloneNode(true);
+        clone.style.width = '140px';
+        clone.style.height = '100px';
+        clone.style.display = 'block';
+        // Make background rect transparent so house renders on dark panel bg
+        const rects = clone.querySelectorAll('rect');
+        rects.forEach(function(r) {
+          if (!r.getAttribute('x') && !r.getAttribute('y') && r.getAttribute('width') === '140') {
+            r.style.fill = 'transparent';
+          }
+        });
+        return clone;
+      };
+
+      const beforeSvg = cloneForPanel(svgEl);
+      beforeSvg.querySelectorAll('[fill]').forEach(function(el) {
+        const f = el.getAttribute('fill');
+        if (f && f !== 'none' && !f.includes('C8861A') && !f.includes('c8861a') && el.style.fill !== 'transparent') {
+          el.setAttribute('fill', 'rgba(70,80,95,0.7)');
+        }
+      });
+      beforeSvg.querySelectorAll('[opacity]').forEach(function(el) {
+        el.setAttribute('opacity', '0.4');
+      });
+      beforeContainer.innerHTML = '';
+      beforeContainer.appendChild(beforeSvg);
+
+      const afterSvg = cloneForPanel(svgEl);
+      afterContainer.innerHTML = '';
+      afterContainer.appendChild(afterSvg);
+    } else {
+      beforeContainer.innerHTML = '';
+      afterContainer.innerHTML = '';
+    }
+
+    lightbox.querySelector('.before-side-label').textContent = 'BEFORE';
+    lightbox.querySelector('.after-side-label').textContent = 'AFTER';
+
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    slider.setSliderPos(100);
+    setTimeout(function() { slider.autoSweep(); }, 80);
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    slider.cancelAuto();
+  }
+
+  document.querySelectorAll('.gallery-card[data-project]').forEach(function(card) {
+    card.addEventListener('click', function() { openLightbox(card.dataset.project); });
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(card.dataset.project); }
+    });
+  });
+
+  lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.querySelector('.lightbox-backdrop').addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+})();
+
 /* ── 10. SCROLL ANIMATIONS ── */
 (function() {
   const items = document.querySelectorAll('.fade-up');
