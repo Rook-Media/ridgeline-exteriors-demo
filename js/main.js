@@ -592,8 +592,14 @@ const projectData = {
   const slider = initSlider(lightbox);
 
   function openLightbox(projectKey) {
+    console.log('[Lightbox] openLightbox called — projectKey:', projectKey);
+
     const data = projectData[projectKey];
-    if (!data) return;
+    if (!data) {
+      console.warn('[Lightbox] No projectData found for key:', projectKey);
+      return;
+    }
+    console.log('[Lightbox] projectData found:', data.title);
 
     lightbox.querySelector('.lightbox-type').textContent = data.type;
     lightbox.querySelector('.lightbox-title').textContent = data.title;
@@ -603,11 +609,13 @@ const projectData = {
     lightbox.querySelector('.before-desc-text').textContent = data.beforeDesc;
     lightbox.querySelector('.after-label-text').textContent = data.afterLabel;
     lightbox.querySelector('.after-desc-text').textContent = data.afterDesc;
+    console.log('[Lightbox] Text fields populated');
 
     const card = document.querySelector('[data-project="' + projectKey + '"]');
     const svgEl = card ? card.querySelector('.gallery-card-img svg') : null;
     const beforeContainer = lightbox.querySelector('.before-svg');
     const afterContainer = lightbox.querySelector('.after-svg');
+    console.log('[Lightbox] Card found:', !!card, '| SVG found:', !!svgEl);
 
     if (svgEl) {
       const cloneForPanel = function(svg) {
@@ -615,7 +623,6 @@ const projectData = {
         clone.style.width = '140px';
         clone.style.height = '100px';
         clone.style.display = 'block';
-        // Make background rect transparent so house renders on dark panel bg
         const rects = clone.querySelectorAll('rect');
         rects.forEach(function(r) {
           if (!r.getAttribute('x') && !r.getAttribute('y') && r.getAttribute('width') === '140') {
@@ -651,8 +658,15 @@ const projectData = {
 
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
+    console.log('[Lightbox] Modal shown — classList:', lightbox.classList.toString(), '| z-index:', window.getComputedStyle(lightbox).zIndex);
+
     slider.setSliderPos(100);
-    setTimeout(function() { slider.autoSweep(); }, 80);
+    console.log('[Lightbox] Slider positioned at 100%');
+
+    setTimeout(function() {
+      slider.autoSweep();
+      console.log('[Lightbox] Auto-sweep started');
+    }, 80);
   }
 
   function closeLightbox() {
